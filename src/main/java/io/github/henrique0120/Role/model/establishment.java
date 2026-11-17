@@ -12,13 +12,14 @@ import java.util.UUID;
 public class establishment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false, length = 30)
     private establishmentType type;
 
     @Column(nullable = false)
@@ -27,4 +28,13 @@ public class establishment {
     @Column(length = 100, nullable = false)
     private String description;
 
+    @Override
+    public String toString() {
+        return "establishment{" +
+                "name='" + name + '\'' +
+                ", type=" + type +
+                ", location='" + location + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
