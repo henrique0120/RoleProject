@@ -20,9 +20,9 @@ public class establishmentController {
         service.save(establishment);
     }
 
-    @GetMapping("/{id}")
-    public establishment find(@PathVariable UUID id) {
-        return service.findById(id);
+    @GetMapping
+    public establishment find(@RequestParam String id) {
+        return service.findById(UUID.fromString(id));
     }
 
 }

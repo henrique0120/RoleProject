@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="<http://www.thymeleaf.org>">
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Thymeleaf Example</title>
+    <meta charset="UTF-8">
+    <title>Buscar usuário</title>
 </head>
+
 <body>
-<h1 th:text="${message}">Mensagem aqui</h1>
-<h1 th:text="${sla}">Mensagem aqui</h1>
-<p>sdasddasds</p>
+
+<h1>Consultar usuário</h1>
+
+<form th:action="@{/establish}" method="get">
+
+    <label for="id">ID do usuário:</label>
+
+    <input
+            type="text"
+            id="id"
+            name="id"
+            placeholder="Digite o ID"
+            required
+    />
+
+    <button type="submit">Buscar</button>
+
+</form>
+
+<!-- Exibe o usuário encontrado -->
+<div th:if="${establishment != null}">
+
+    <h2>Usuário encontrado:</h2>
+
+    <p>
+        ID:
+        <span th:text="${establishment.id}"></span>
+    </p>
+
+    <p>
+        Nome:
+        <span th:text="${establishment.name}"></span>
+    </p>
+
+<!--    <p>-->
+<!--        Email:-->
+<!--        <span th:text="${usuario.email}"></span>-->
+<!--    </p>-->
+
+</div>
+
+<!-- Exibe mensagem de erro -->
+<!--<div th:if="${erro != null}">-->
+<!--    <p th:text="${erro}"></p>-->
+<!--</div>-->
+
 </body>
 </html>
