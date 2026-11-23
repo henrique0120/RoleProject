@@ -5,8 +5,10 @@ import io.github.henrique0120.Role.service.establishmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -20,9 +22,19 @@ public class establishmentController {
         service.save(establishment);
     }
 
-    @GetMapping
-    public establishment find(@RequestParam String id) {
+    @GetMapping("/find")
+    public List<establishment> findAll(){
+        return service.findAll();
+    }
+
+    @GetMapping("{id}")
+    public establishment find(@PathVariable String id) {
         return service.findById(UUID.fromString(id));
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable String id){
+        service.delete(UUID.fromString(id));
     }
 
 }

@@ -5,6 +5,7 @@ import io.github.henrique0120.Role.repository.establishmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,7 +20,15 @@ public class establishmentService {
     }
 
     public establishment findById(UUID id) {
-        return repository.findById(id);
+        return repository.findById(id).orElse(null);
+    }
+
+    public List<establishment> findAll(){
+        return repository.findAll();
+    }
+
+    public void delete(UUID id){
+        repository.deleteById(id);
     }
 
 
