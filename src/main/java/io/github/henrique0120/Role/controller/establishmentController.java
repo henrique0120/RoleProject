@@ -28,7 +28,7 @@ public class establishmentController {
     }
 
     @GetMapping("{id}")
-    public establishment find(@PathVariable String id) {
+    public establishment find(@PathVariable String id)  {
         return service.findById(UUID.fromString(id));
     }
 
